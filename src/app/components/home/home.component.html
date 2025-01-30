@@ -1,0 +1,53 @@
+<main id="container">
+    <div class="buttonContainer">
+        <button mat-raised-button color="primary" (click)="showCoins()">
+            <mat-icon>list</mat-icon>
+            Mostrar Moedas
+        </button>
+        <button mat-raised-button color="accent" (click)="getCoinPage()">
+            <mat-icon>attach_money</mat-icon>
+            Ver Moeda
+        </button>
+
+        <button mat-raised-button color="accent" (click)="editCoinPage()">
+            <mat-icon>create</mat-icon>
+            Editar
+        </button>
+
+        <button mat-raised-button color="warn" (click)="createCoinPage()">
+            <mat-icon>add</mat-icon>
+            Cadastrar
+        </button>
+
+    </div>
+    <section id="coinContainer">
+        @if(showList && coins.length > 0) {
+        <mat-list class="coinList">
+            @for (coin of coins; track coin) {
+            <div class="card">
+                <div class="cardHeader">
+                    <div class="cardIcon">💱</div>
+                    <div>
+                        <div class="cardTitle">{{ coin.nome }}</div>
+                        <div class="cardSubtitle">{{ coin.sigla }} - {{ coin.simbolo }}</div>
+                    </div>
+                </div>
+
+                <div class="cardContent">
+                    <p><strong>Código:</strong> {{ coin.codigo }}</p>
+                </div>
+
+                <hr class="cardDivider" />
+            </div>
+
+            }
+        </mat-list>
+
+        } @else {
+        <h3 mat-line>Sem Moedas</h3>
+        }
+
+
+
+    </section>
+</main>

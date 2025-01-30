@@ -1,0 +1,88 @@
+<div id="container">
+    <form [formGroup]="searchForm" (ngSubmit)="onSearch()" id="searchForm">
+        <mat-form-field appearance="fill" class="searchField">
+            <mat-label>Buscar moeda</mat-label>
+            <input matInput type="search" placeholder="Digite a sigla da moeda (Ex: USD)" formControlName="acronym" />
+            @if(searchForm.get('acronym')?.invalid){
+            <mat-error>
+                Acrônimo inválido (exatamente 3 letras maiúsculas).
+            </mat-error>
+            }
+            <button mat-icon-button matSuffix color="primary" type="submit" [disabled]="!searchForm.valid">
+                <mat-icon>search</mat-icon>
+            </button>
+        </mat-form-field>
+        <div (click)="toHome()" class="arrow">
+            <mat-icon>arrow_back</mat-icon>
+        </div>
+
+    </form>
+
+
+    @if(selectedCoin) {
+    <form [formGroup]="editForm" (ngSubmit)="onSubmit()" id="formContainer">
+        <mat-card-header>
+            <mat-card-title>Edição da Moeda</mat-card-title>
+        </mat-card-header>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Guid Empresa</mat-label>
+            <input matInput type="text" placeholder="Digite o GUID" formControlName="guidEmpresa" />
+            @if(editForm.get('guidEmpresa')?.invalid){
+            <mat-error>
+                GUID inválido (exatamente 36 caracteres).
+            </mat-error>
+            }
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Sigla</mat-label>
+            <input matInput type="text" placeholder="Digite a sigla da moeda (Ex: USD)" formControlName="sigla" />
+            @if(editForm.get('sigla')?.invalid){
+            <mat-error>
+                Acrônimo inválido (exatamente 3 letras maiúsculas).
+            </mat-error>
+            }
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Nome</mat-label>
+            <input matInput type="text" placeholder="Digite o nome da moeda" formControlName="nome" />
+            @if(editForm.get('nome')?.invalid){
+            <mat-error>
+                Nome inválido (mínimo 3, máximo 15 caracteres).
+            </mat-error>
+            }
+
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Símbolo</mat-label>
+            <input matInput type="text" placeholder="Digite o símbolo da moeda (Ex: $)" formControlName="simbolo" />
+            @if(editForm.get('simbolo')?.invalid){
+            <mat-error>
+                Símbolo inválido (separe múltiplos símbolos com vírgulas).
+            </mat-error>
+            }
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Código</mat-label>
+            <input matInput type="number" placeholder="Digite o código" formControlName="codigo" />
+            @if(editForm.get('codigo')?.invalid){
+            <mat-error>
+                Código inválido (número entre 1 e 999).
+            </mat-error>
+            }
+        </mat-form-field>
+
+
+        <button mat-raised-button color="primary" type="submit" [disabled]="!editForm.valid">
+            Salvar Alterações
+        </button>
+
+    </form>
+    }
+
+
+</div>

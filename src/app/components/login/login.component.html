@@ -1,0 +1,36 @@
+<div id="loginContainer">
+
+    <div class="logo">
+        <span class="logoTitle">AT</span>
+        <span class="logoSubtitle">Login</span>
+    </div>
+
+    <form class="formContainer" [formGroup]="loginForm">
+        <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" placeholder="Digite seu email">
+            @if(loginForm.get("email")?.invalid) {
+            <mat-error>Email Inválido.</mat-error>
+            }
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Senha</mat-label>
+            <input formControlName="password" matInput [type]="hide() ? 'password' : 'text'"
+                placeholder="Digite sua senha" />
+            <button mat-icon-button matSuffix (click)="clickEvent($event)" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide()">
+                <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            @if(loginForm.get("password")?.invalid) {
+            <mat-error>A senha precisa ter mais de 6 digítos.</mat-error>
+            }
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" (click)="onSubmit()" type="submit">Login</button>
+        <button mat-button color="accent" class="signupButton" (click)="onChangeScreen()">
+            Não tem uma conta? <strong>Crie agora</strong>
+        </button>
+
+    </form>
+</div>

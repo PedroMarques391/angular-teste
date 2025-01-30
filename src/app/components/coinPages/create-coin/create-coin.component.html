@@ -1,0 +1,71 @@
+<main id="container">
+    <form id="formContainer" [formGroup]="createCoinForm">
+        <div (click)="toHome()" class="arrow">
+            <mat-icon>arrow_back</mat-icon>
+        </div>
+        <mat-card-title>Criar Nova Moeda</mat-card-title>
+        <mat-form-field appearance="outline">
+            <mat-label>GUID da Empresa</mat-label>
+            <input matInput formControlName="guidEmpresa" placeholder="GUID único" />
+            @if(createCoinForm.get('guidEmpresa')?.invalid) {
+            <mat-error>
+                GUID inválido (exatamente 36 caracteres).
+            </mat-error>
+            }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Acrônimo</mat-label>
+            <input matInput formControlName="sigla" placeholder="Ex: USD" />
+            @if(createCoinForm.get('sigla')?.invalid){
+            <mat-error>
+                Acrônimo inválido (exatamente 3 letras maiúsculas).
+            </mat-error>
+            }
+
+
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Nome da Moeda</mat-label>
+            <input matInput formControlName="nome" placeholder="Ex: Dólar Americano" />
+            @if(createCoinForm.get('nome')?.invalid){
+            <mat-error>
+                Nome inválido (mínimo 3, máximo 15 caracteres).
+            </mat-error>
+            }
+
+
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Símbolo</mat-label>
+            <input matInput formControlName="simbolo" placeholder="Ex: $, €" />
+            @if(createCoinForm.get('simbolo')?.invalid){
+            <mat-error>
+                Símbolo inválido (separe múltiplos símbolos com vírgulas).
+            </mat-error>
+            }
+
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Código</mat-label>
+            <input matInput formControlName="codigo" type="number" placeholder="Ex: 840" />
+            @if(createCoinForm.get('codigo')?.invalid){
+            <mat-error>
+                Código inválido (número entre 1 e 999).
+            </mat-error>
+            }
+
+        </mat-form-field>
+
+
+        <button mat-raised-button color="primary" type="submit" style="width: 80%; margin: 0 auto 0 auto;"
+            [disabled]="createCoinForm.invalid" (click)="onSubmit()">Criar
+            Moeda
+        </button>
+
+    </form>
+
+</main>

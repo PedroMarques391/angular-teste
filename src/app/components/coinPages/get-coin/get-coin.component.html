@@ -1,0 +1,52 @@
+<main id="container">
+    <mat-card class="searchCard">
+        <mat-card-header>
+            <mat-card-title>Buscar Moeda</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <form [formGroup]="searchForm" (ngSubmit)="onSearch()">
+                <mat-form-field class="searchField" appearance="outline">
+                    <mat-label apa>Digite a sigla da moeda</mat-label>
+                    <input matInput id="coinSigla" formControlName="acronym" type="text"
+                        placeholder="Ex: BTC, USD, EUR" />
+                    <mat-icon matPrefix>search</mat-icon>
+                    @if(searchForm.get('acronym')?.invalid){
+                    <mat-error>
+                        Acrônimo inválido (exatamente 3 letras maiúsculas).
+                    </mat-error>
+                    }
+                </mat-form-field>
+                <button mat-raised-button color="primary" type="submit" [disabled]="!searchForm.valid"
+                    style="width: 100%;">Pesquisar</button>
+            </form>
+        </mat-card-content>
+        <div (click)="toHome()" class="arrow">
+            <mat-icon>arrow_back</mat-icon>
+        </div>
+    </mat-card>
+    @if(showList && coins.length > 0) {
+
+    <mat-card class="card">
+        @for(coin of coins; track coin) {
+        <div class="cardClass mat-elevation-z3">
+            <div class="cardHeader">
+                <mat-icon class="cardIcon">currency_exchange</mat-icon>
+                <div>
+                    <h3 class="cardTitle">{{ coin.nome }}</h3>
+                    <h4 class="cardSubtitle">{{ coin.sigla }} - {{ coin.simbolo }}</h4>
+                </div>
+            </div>
+            <div class="cardContent">
+                <p><strong>Código:</strong> {{ coin.codigo }}</p>
+            </div>
+            <hr class="cardDivider">
+        </div>
+
+        }
+
+    </mat-card>
+
+    } @else {
+    <h3 mat-line style="margin-top: 10px;">Sem Moedas</h3>
+    }
+</main>
