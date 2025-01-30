@@ -16,12 +16,12 @@ Este projeto é uma aplicação Angular que utiliza o JSON Server como API para 
 2. **Gerenciamento de Moedas**  
    - **Home**:
      - Tela principal onde o usuário pode navegar para outras funcionalidades relacionadas às moedas.
-   - **Get Coins** (`/home/getCoins`):
+   - **Get Coins** (`/home/getCoin`):
      - Lista todas as moedas registradas no sistema, obtidas por meio de uma requisição GET ao JSON Server no endpoint `/moedas`.
    - **Create Coin** (`/home/createCoin`):
      - Permite a criação de uma nova moeda.
      - O usuário insere dados como código, nome, sigla e símbolo da moeda. Esses dados são enviados ao JSON Server por meio de uma requisição POST.
-   - **Edit Coins** (`/home/editCoins`):
+   - **Edit Coins** (`/home/editCoin`):
      - Permite editar os dados de uma moeda existente.
      - Os dados atualizados são enviados por meio de uma requisição PUT ao endpoint `/moedas/:id`.
 
