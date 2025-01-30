@@ -1,6 +1,6 @@
 
 
-Este projeto é uma aplicação Angular que utiliza o JSON Server como API para realizar operações **CRUD** (GET, POST, PUT) relacionadas a moedas. A aplicação inclui um sistema de autenticação básico que protege as rotas internas. Os dados de autenticação são armazenados no **localStorage**, já que é um ambiente de teste.
+Este projeto é uma aplicação Angular que utiliza o JSON Server como API para realizar operações **CRUD** (GET, POST, PUT) relacionadas a moedas. A aplicação inclui um sistema de autenticação básico que protege as rotas internas. Os dados de autenticação são armazenados no **localStorage**, já que é um projeto de teste.
 
 ---
 
